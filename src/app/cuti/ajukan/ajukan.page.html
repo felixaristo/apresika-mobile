@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <div style="margin: 20px; margin-left: 20px;">
+    <img style='vertical-align:middle; width: 24px;' src='../../assets/img/back.png' (click)="onBack()">
+    <div style='vertical-align:middle; display:inline; color: white; font-size: 14px!important;'>
+      Ajukan Cuti
+    </div>
+  </div>
+  <div style="margin: auto;
+  width: 90%;
+  height: 88%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: white; color: black;">
+    <div style="font-weight: bold; font-size: 16px; margin-bottom: 10px;">
+      Formulir Pengajuan Cuti
+    </div>
+    <!-- <ion-item>
+      <ion-input label="Tipe Cuti" placeholder="Cuti Tahunan"></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-select
+        label="Periode"
+        interface="action-sheet"
+        placeholder="Select period"
+        cancelText="Cancel Choice"
+        [(ngModel)]="selectedLeaveType"
+      >
+        <ion-select-option *ngFor="let data of userLeavesType; let i = index" [value]="data.id">{{data.name}}</ion-select-option>
+        <!-- <ion-select-option value="oranges">Maret</ion-select-option>
+        <ion-select-option value="bananas">April</ion-select-option> -->
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input type="date" [(ngModel)]="startDate" label="Tanggal Mulai" placeholder="DD-MM-YYYY"></ion-input>
+      
+    </ion-item>
+    <ion-item>
+      <ion-input type="date" [(ngModel)]="endDate" label="Tanggal Berakhir" placeholder="DD-MM-YYYY"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Deskripsi" [(ngModel)]="description" labelPlacement="floating" [counter]="true" maxlength="250"></ion-textarea>
+    </ion-item>
+    <ion-button expand="block" (click)="submitLeave()">Ajukan Cuti</ion-button>
+  </div>
+  
+</ion-content>

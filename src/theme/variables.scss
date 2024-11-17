@@ -1,0 +1,49 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+
+@font-face {
+font-family: Roboto;
+src: url("https://fonts.googleapis.com/css?family=Roboto"); //change url accordingly
+}
+
+:root {
+    --bgColorGlobal: #137558;
+    --ion-font-family: Roboto;
+}
+
+ion-content{
+    --ion-background-color:var(--bgColorGlobal);
+}
+
+ion-item{
+    --ion-background-color:#FFFF;
+    --padding-start: 5px;
+    --padding-end: 5px;
+    
+}
+
+ion-list{
+    --ion-background-color:#FFFF;
+}
+
+ion-card{
+    --ion-background-color:#FFFF;
+}
+
+ion-input{
+    --highlight-color-focused: var(--bgColorGlobal)!important;
+}
+
+ion-button{
+    --background: var(--bgColorGlobal);
+}
+
+ion-fab-button {
+    --background:  var(--bgColorGlobal)!important;
+    --background-activated:  var(--bgColorGlobal)!important;
+    --background-hover:  var(--bgColorGlobal)!important;
+    margin: 5px;
+    width: 70px;
+    height: 70px;
+  }

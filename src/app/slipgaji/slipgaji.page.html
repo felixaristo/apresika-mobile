@@ -1,0 +1,154 @@
+<ion-content [fullscreen]="true">
+  <div style="margin: 20px; margin-left: 20px;">
+    <img style='vertical-align:middle; width: 24px;' src='../../assets/img/back.png' (click)="onBack()">
+    <div style='vertical-align:middle; display:inline; color: white; font-size: 14px!important;'>
+      Slip Gaji
+    </div>
+  </div>
+  <div style="margin: auto;
+  width: 90%;
+  height: 70px;
+  border-radius: 10px;
+  padding: 20px 10px 10px 10px;
+  margin-top: 20px;
+  background-color: white;">
+      <div style="font-size: 20px; font-weight: bold; color: black; text-align: center;">Daftar Slip Gaji</div>
+    </div>
+  <!-- <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item style="border: 1px solid var(--bgColorGlobal);">
+            <ion-select
+              label="Periode"
+              interface="action-sheet"
+              placeholder="Select period"
+              cancelText="Cancel Choice"
+              style="--padding-start:10px;"
+              [(ngModel)]="selectPeriod"
+              (ionChange)="changePeriod()"
+            >
+              <ion-select-option value="01">Januari</ion-select-option>
+              <ion-select-option value="02">Februari</ion-select-option>
+              <ion-select-option value="03">Maret</ion-select-option>
+              <ion-select-option value="04">April</ion-select-option>
+              <ion-select-option value="05">Mei</ion-select-option>
+              <ion-select-option value="06">Juni</ion-select-option>
+              <ion-select-option value="07">Juli</ion-select-option>
+              <ion-select-option value="08">Agustus</ion-select-option>
+              <ion-select-option value="09">September</ion-select-option>
+              <ion-select-option value="10">Oktober</ion-select-option>
+              <ion-select-option value="11">November</ion-select-option>
+              <ion-select-option value="12">Desember</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="auto">
+          <div style="width: 45px; height: 45px; background-color: white; padding: 10px;">
+            <img src="../../assets/img/download.png" width="30">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div> -->
+
+  <!-- <div style="margin: auto;
+  width: 90%;
+  height: 130px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 40px;
+  background-color: white;">
+    <div style="margin: 20px 0px 20px 20px;">
+      <img style='vertical-align:middle; width: 24px;' src='../../assets/img/calendar.png'>
+      <div style='margin-left: 20px; vertical-align:middle; display:inline; color: black; font-size: 18px!important;font-weight: bold;'>
+        1 Juli 2024 (08:30 - 00:00)
+      </div>
+    </div>
+    <ion-button expand="block" routerLink="/tabs/tab1">Clock In</ion-button>
+  </div> -->
+  <div style="height: 82%; overflow: auto; background-color: white; position: fixed; bottom: 0; width: 100%; ">
+    <div>
+      <div *ngFor="let data of payslipList; let i = index" style="margin: 20px 20px 20px 20px; border: 1px solid black; border-radius: 10px;">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                Periode
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right;font-size: 16px; color: black;">
+                {{data.periode}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                Deskripsi
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right; font-size: 16px; color: black;">
+                {{data.desc}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                ID Pegawai
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right; font-size: 16px; color: black;">
+                {{data.employee_id}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style=" font-size: 16px; color: black;">
+                Nama Pegawai
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right;  font-size: 16px; color: black;">
+                {{profile.employee_name}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style=" font-size: 16px; color: black;">
+                Jabatan
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right;  font-size: 16px; color: black;">
+                {{profile.job_title}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style=" font-size: 16px; color: black;">
+                Total
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right;  font-size: 16px; color: black;">
+                {{data.amount}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <div style="margin-top: 10px;">
+            <ion-button expand="block" (click)="detailPayslip(data.payslip_id, data.periode)">Detail</ion-button>
+          </div>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

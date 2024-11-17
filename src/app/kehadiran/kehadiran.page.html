@@ -1,0 +1,113 @@
+<ion-content [fullscreen]="true">
+  <div style="margin: 20px; margin-left: 20px;">
+    <img style='vertical-align:middle; width: 24px;' src='../../assets/img/back.png' (click)="onBack()">
+    <div style='vertical-align:middle; display:inline; color: white; font-size: 14px!important;'>
+      Kehadiran
+    </div>
+  </div>
+  <div style="margin: auto;
+  width: 90%;
+  /* height: 130px; */
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 40px;
+  background-color: white;">
+    <div style="margin: 20px 0px 20px 20px;">
+      <img style='vertical-align:middle; width: 24px;' src='../../assets/img/calendar.png'>
+      <div style='margin-left: 10px; vertical-align:middle; display:inline; color: black; font-size: 18px!important;font-weight: bold;'>
+        {{dateShow}} (08:30 - 17:00)
+      </div>
+    </div>
+    <!-- <div *ngIf="disabledButton" style="text-align: center; color: red; margin-bottom: 10px;">Mohon untuk mengaktifkan perizinan akses data lokasi Anda terlebih dahulu sebelum melakukan kehadiran.</div> -->
+    <ion-alert
+      [isOpen]="popupLocation"
+      header="Peringatan"
+      message="Mohon untuk mengaktifkan perizinan akses data lokasi Anda terlebih dahulu sebelum melakukan kehadiran."
+      [buttons]="alertButtons"
+      (didDismiss)="setOpen(false)"
+    ></ion-alert>
+    <!-- <ion-button expand="block" (click)="createAttendance()" [disabled]="disabledButton">{{titleButton}}</ion-button> -->
+    
+  </div>
+  <div style="height: 75%; background-color: white; position: fixed; bottom: 0; width: 100%;">
+    <div>
+      <div style="margin: 20px 0px 20px 30px;">
+        <div style="color: black; font-size: 20px; font-weight: bold;">Attendance Log</div>
+      </div>
+
+      <div style="margin: 20px 20px 20px 30px; border-radius: 30px; border: 1px solid var(--bgColorGlobal);">
+        <ion-item style="border-radius: 30px; border: 1px solid var(--bgColorGlobal);">
+          <ion-select
+            label="Periode"
+            interface="action-sheet"
+            placeholder="Select period"
+            cancelText="Cancel Choice"
+            style="--padding-start:10px;"
+            [(ngModel)]="selectPeriod"
+            (ionChange)="changePeriod()"
+          >
+            <ion-select-option value="01">Januari</ion-select-option>
+            <ion-select-option value="02">Februari</ion-select-option>
+            <ion-select-option value="03">Maret</ion-select-option>
+            <ion-select-option value="04">April</ion-select-option>
+            <ion-select-option value="05">Mei</ion-select-option>
+            <ion-select-option value="06">Juni</ion-select-option>
+            <ion-select-option value="07">Juli</ion-select-option>
+            <ion-select-option value="08">Agustus</ion-select-option>
+            <ion-select-option value="09">September</ion-select-option>
+            <ion-select-option value="10">Oktober</ion-select-option>
+            <ion-select-option value="11">November</ion-select-option>
+            <ion-select-option value="12">Desember</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div style="overflow: auto; height: 400px;">
+        <ion-list>
+          <ion-item  *ngFor="let data of userAttendance; let i = index">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="auto">
+                  <div style="width: 50px; text-align: center;">
+                    <img src="../../assets/img/kehadiran.png" style="margin-left: 20px; margin-top: 20px;" width="34">
+                    <!-- <div style="color: black;">
+                      Senin
+                    </div> -->
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div style="text-align: center; margin-top: 10px;color: black">
+                    <div style="font-weight: bold;">Check In</div>
+                    <div style="font-size: 12px; margin-top: 10px;">{{data.check_in}}</div>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div style="text-align: center; margin-top: 10px;color: black">
+                    <div style="font-weight: bold;">Check Out</div>
+                    <div style="font-size: 12px; margin-top: 10px;">{{data.check_out}}</div>
+                  </div>
+                </ion-col>
+                <!-- <ion-col>
+                  <div style="text-align: right; margin-top: 20px;color: black">
+                    1 Juli
+                  </div>
+                </ion-col> -->
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+<!-- 
+  <div style="position: absolute; bottom: 0; text-align: center; width: 100%; padding-left: 100px; padding-right: 100px;">
+    <ion-button expand="block" (click)="createAttendance()" [disabled]="disabledButton">
+      <div>
+        <img src="../../assets/img/kehadiran.png" style="margin-right: 10px;" width="30">
+      </div>
+      <div>
+        {{titleButton}}
+      </div>
+      
+    </ion-button>
+  </div> -->
+</ion-content>

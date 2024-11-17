@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+  <div style="margin-top: 10px;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div style="margin: 20px 0px 0px 20px;">
+            <img *ngIf="!isEvening" style='vertical-align:middle; width: 34px;' src='../../assets/img/morning.png'>
+            <img *ngIf="isEvening" style='vertical-align:middle; width: 34px;' src='../../assets/img/half-moon.png'>
+            <div style='vertical-align:middle; display:inline; color: white; font-size: 24px!important; font-weight: bold;'>
+              {{greetings}}
+            </div>
+            <div style="color: white; font-weight: bold;font-size: 24px; margin-top: 4px;">
+              <span>{{fullname}}</span>
+            </div>
+            <div style="color: white; font-size: 12px; margin-top: 2px;">
+              <span>{{job_title}}</span>
+            </div>
+            <div style="color: white; font-size: 12px; margin-top: 5px;">
+              <span>{{department}}</span>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="auto">
+          <div style="width: 100px; padding-top: 30px;">
+            <!-- Avatar -->
+             <img style="border-radius: 50%; width: 80px; height: 80px; object-fit: cover;" 
+             [src]="photo">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div style="height: 78%; background-color: white; position: fixed; bottom: 0; width: 100%;">
+    <ion-grid>
+      <ion-row style="margin-top: 50px;">
+        <ion-col>
+          <div style="margin: 20px 0px 0px 20px; text-align: center;" routerLink="/kehadiran">
+            <img src='../../assets/img/kehadiran.png' style="width: 64px;">
+            <div style="color: black; font-size: 16px; margin-top: 4px;">
+              <span>Kehadiran</span>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div style="margin: 20px 0px 0px 20px; text-align: center; padding-top: 9px;" routerLink="/cuti">
+            <img src='../../assets/img/cuti.png' style="width: 65px;">
+            <div style="color: black; font-size: 16px; margin-top: 10px;">
+              <span>Cuti</span>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 20px;">
+        <ion-col>
+          <div style="margin: 20px 0px 0px 20px; text-align: center;" routerLink="/slipgaji">
+            <img src='../../assets/img/slipgaji.png' style="width: 64px;">
+            <div style="color: black; font-size: 16px; margin-top: 4px;">
+              <span>Slip Gaji</span>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

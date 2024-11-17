@@ -1,0 +1,7 @@
+{
+  "name": "apresika",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

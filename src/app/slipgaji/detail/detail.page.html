@@ -1,0 +1,119 @@
+<ion-content [fullscreen]="true">
+  <div style="margin: 20px; margin-left: 20px;">
+    <img style='vertical-align:middle; width: 24px;' src='../../assets/img/back.png' (click)="onBack()">
+    <div style='vertical-align:middle; display:inline; color: white; font-size: 14px!important;'>
+      Slip Gaji
+    </div>
+  </div>
+  <div style="margin: auto;
+  width: 90%;
+  height: 70px;
+  border-radius: 10px;
+  padding: 20px 10px 10px 10px;
+  margin-top: 20px;
+  background-color: white;">
+      <div style="font-size: 20px; font-weight: bold; color: black; text-align: center;">Detail Slip Gaji</div>
+    </div>
+  <div style="height: 82%; overflow: auto; background-color: white; position: fixed; bottom: 0; width: 100%;">
+    <div>
+
+      <div style="margin: 20px 20px 20px 20px; border: 1px solid black;">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                Periode
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right;font-size: 16px; color: black;">
+                {{periode}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                ID Pegawai
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right; font-size: 16px; color: black;">
+                {{profile.employee_id}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style=" font-size: 16px; color: black;">
+                Nama Pegawai
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right;  font-size: 16px; color: black;">
+                {{profile.employee_name}}
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style=" font-size: 16px; color: black;">
+                Jabatan
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: right;  font-size: 16px; color: black;">
+                {{profile.job_title}}
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div style="margin: 20px 20px 20px 20px; border: 1px solid var(--bgColorGlobal);">
+        <ion-grid>
+          <ion-row style="margin-bottom: 10px;">
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                Penghasilan
+              </div>
+            </ion-col>
+            <ion-col>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let data of payslipDetail.detail; let i = index">
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                {{data.name}}
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: left; margin-left: 50px; font-size: 16px; color: black;">
+                {{data.amount_fix}}
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div style="margin: 20px 20px 20px 20px; border: 1px solid var(--bgColorGlobal);">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div style="font-size: 16px; color: black;">
+                Take Home Pay
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="text-align: left; margin-left: 50px; font-size: 16px; color: black;">
+                {{payslipDetail.paid_amount}}
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div style="margin: 10px 20px 0px 20px;">
+        <ion-button expand="block" (click)="downloadSlipGaji(id_payslip)">Download Slip Gaji</ion-button>
+      </div>
+      
+    </div>
+  </div>
+</ion-content>
