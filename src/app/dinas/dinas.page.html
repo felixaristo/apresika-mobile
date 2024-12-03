@@ -1,0 +1,181 @@
+<ion-content [fullscreen]="true">
+  <div style="margin: 20px; margin-left: 20px;">
+    <img style='vertical-align:middle; width: 24px;' src='../../assets/img/back.png' (click)="onBack()">
+    <div style='vertical-align:middle; display:inline; color: white; font-size: 14px!important;'>
+      Dinas
+    </div>
+  </div>
+  <div style="margin: auto;
+  width: 90%;
+  height: 80px;
+  border-radius: 10px;
+  padding: 20px 10px 10px 10px;
+  margin-top: 40px;
+  background-color: white;">
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="color: black;">
+            <div style="font-weight: bold; font-size: 18px; float: left;">Menunggu Persetujuan</div>
+            <div style="font-weight: bold; font-size: 18px; float: right;">3</div>
+          </ion-col>
+          <ion-modal [isOpen]="isModalOpen" style="margin-top: 300px;">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar  style="--background: var(--bgColorGlobal);">
+                  <ion-title style="color: white;">Detail Leaves</ion-title>
+                  <ion-buttons  slot="end">
+                    <ion-button style="--background:none!important;--color:white!important;" (click)="closeModal()">Close</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content style="--ion-background-color:white!important;">
+                <ion-card *ngFor="let data of userRemainingDetailList; let i = index">
+                  <ion-card-header>
+                    <div style="font-weight: bold; font-size: 20px; color: black;">
+                      {{data.desc}}
+                    </div>
+                  </ion-card-header>
+                
+                  <ion-card-content>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col>
+                          <div style="font-size: 16px; color: black;">
+                            Days Taken
+                          </div>
+                        </ion-col>
+                        <ion-col>
+                          <div style="text-align: left; margin-left: 50px; font-size: 16px; color: black;">
+                            {{data.days_taken}}
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col>
+                          <div style="font-size: 16px; color: black;">
+                            Days Allocation
+                          </div>
+                        </ion-col>
+                        <ion-col>
+                          <div style="text-align: left; margin-left: 50px; font-size: 16px; color:black;">
+                            {{data.days_allocation}}
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col>
+                          <div style="font-size: 16px; color: black">
+                            Status
+                          </div>
+                        </ion-col>
+                        <ion-col>
+                          <div style="text-align: left; margin-left: 50px; font-size: 16px; color: black;">
+                            {{data.status}}
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </ion-card-content>
+                </ion-card>
+                
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+          <!-- <ion-col style="text-align: center; color: black;">
+            <div style="font-weight: bold; font-size: 18px;">Cuti <br/> Unpaid Leave</div>
+            <div style="font-weight: bold; font-size: 16px; margin-top: 5px;">10 Hari</div>
+            <div style="text-decoration: underline; font-size: 16px; margin-top: 5px;">Detail</div>
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <div style="height: 80%; background-color: white; position: fixed; bottom: 0; width: 100%;">
+    <div>
+      <div style="margin: 20px 20px 20px 30px; border-radius: 30px; border: 1px solid var(--bgColorGlobal);">
+        <ion-item style="border-radius: 30px; border: 1px solid var(--bgColorGlobal);">
+          <ion-select
+            label="Periode"
+            interface="action-sheet"
+            placeholder="Select period"
+            cancelText="Cancel Choice"
+            style="--padding-start:10px;"
+            [(ngModel)]="selectPeriod"
+            (ionChange)="changePeriod()"
+          >
+            <ion-select-option value="01">Januari</ion-select-option>
+            <ion-select-option value="02">Februari</ion-select-option>
+            <ion-select-option value="03">Maret</ion-select-option>
+            <ion-select-option value="04">April</ion-select-option>
+            <ion-select-option value="05">Mei</ion-select-option>
+            <ion-select-option value="06">Juni</ion-select-option>
+            <ion-select-option value="07">Juli</ion-select-option>
+            <ion-select-option value="08">Agustus</ion-select-option>
+            <ion-select-option value="09">September</ion-select-option>
+            <ion-select-option value="10">Oktober</ion-select-option>
+            <ion-select-option value="11">November</ion-select-option>
+            <ion-select-option value="12">Desember</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <div style="overflow: auto; height: 400px;">
+        <ion-list>
+          <ion-item *ngFor="let data of userDinasList; let i = index" style="padding-left: 10px; padding-right: 10px;">
+            <ion-grid>
+              <ion-row (click)="goToDetail(data.id)">
+                <ion-col>
+                  <div >
+                    <div style="text-align: left; margin-top:10px;color: black; padding: 5px;">
+                      <div style="font-weight: bold;">{{data.title}}</div>
+                    </div>
+                    <!-- <div style="text-align: left; margin-top: 0px;color: black">
+                      <div style="font-weight: bold;">1 - 2 Feb 2024</div>
+                    </div> -->
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div style="margin-top: 0px;color: black">
+                      <div *ngIf="data.status === 'validate'" style="margin-left: auto; 
+                                  margin-right: 0; 
+                                  text-align: center; 
+                                  width: 80px; 
+                                  color: white; 
+                                  background-color: var(--bgColorGlobal); 
+                                  padding: 5px; border-radius: 10px; font-size: 12px;">
+                                  Disetujui
+                      </div>
+                      <div *ngIf="data.status === 'refuse'" style="margin-left: auto; 
+                                  margin-right: 0; 
+                                  text-align: center; 
+                                  width: 80px; 
+                                  color: white; 
+                                  background-color: red; 
+                                  padding: 5px; border-radius: 10px; font-size: 12px;">
+                                  Dibatalkan
+                      </div>
+                      <div *ngIf="data.status === 'confirm'" style="margin-left: auto; 
+                                  margin-right: 0; 
+                                  text-align: center; 
+                                  width: 80px; 
+                                  color: white; 
+                                  background-color: gray; 
+                                  padding: 5px; border-radius: 10px; font-size: 12px;">
+                                  Menunggu
+                      </div>
+                  </div>
+                  <div style="text-align: right; margin-top: 5px;color: black">
+                    <div style="margin-right: 5px;">{{data.days}} Hari</div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div style="margin: 20px;">
+        <ion-button expand="block" routerLink="/dinas-ajukan">Ajukan Dinas</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

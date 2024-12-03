@@ -35,8 +35,8 @@ export class TabsPage {
   ) { }
 
   ionViewDidEnter(){
-    this.getCoordinates();
-    this.getUserAttendanceStatus();
+    // this.getCoordinates();
+    // this.getUserAttendanceStatus();
   }
 
   ngOnInit() {

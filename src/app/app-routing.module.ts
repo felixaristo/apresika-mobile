@@ -45,7 +45,19 @@ const routes: Routes = [
   {
     path: 'payroll',
     loadChildren: () => import('./account/payroll/payroll.module').then( m => m.PayrollPageModule)
-  }
+  },
+  {
+    path: 'dinas',
+    loadChildren: () => import('./dinas/dinas.module').then( m => m.DinasPageModule)
+  },
+  {
+    path: 'dinas-detail/:id',
+    loadChildren: () => import('./dinas/detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'dinas-ajukan',
+    loadChildren: () => import('./dinas/ajukan/ajukan.module').then( m => m.AjukanPageModule)
+  },
 ];
 @NgModule({
   imports: [

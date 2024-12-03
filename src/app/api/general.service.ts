@@ -8,8 +8,8 @@ import { Preferences } from '@capacitor/preferences';
 export class GeneralService {
   private http = inject(HttpClient);
   private tokenBearer = "123456";
-  // private baseURL = "https://dev-apresika.anysoft.id";
-  private baseURL = "https://apresika.com";
+  private baseURL = "https://dev-apresika.anysoft.id";
+  // private baseURL = "https://apresika.com";
   constructor() { }
 
   generalCallApi(method: string, url: any, body: any): any{
@@ -82,6 +82,18 @@ export class GeneralService {
 
   downloadPayslip(id: any){
     return this.generalCallApi('get', `${this.baseURL}/api/user/payslip/download/${id}`, null)
+  }
+
+  userBusinessTripList(body: any){
+    return this.generalCallApi('post', `${this.baseURL}/api/user/business_trip/list`, body)
+  }
+
+  userDinasCreate(body: any){
+    return this.generalCallApi('post', `${this.baseURL}/api/user/business_trip/create`, body)
+  }
+
+  dinasDetail(id: any){
+    return this.generalCallApi('get', `${this.baseURL}/api/user/business_trip/detail/${id}`, null)
   }
 
   async saveDataLocal(data: any){
